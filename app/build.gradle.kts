@@ -2,13 +2,16 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-kapt")
+    id("androidx.room")
     id("com.google.dagger.hilt.android")
 }
 
 android {
     namespace = "com.example.dolarapp"
     compileSdk = 34
-
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
     defaultConfig {
         applicationId = "com.example.dolarapp"
         minSdk = 24
@@ -78,6 +81,13 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     //ViewModel Compose
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.5")
+
+
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
+
+    // To use Kotlin annotation processing tool (kapt)
+    kapt("androidx.room:room-compiler:2.6.1")
 }
 kapt {
     correctErrorTypes = true

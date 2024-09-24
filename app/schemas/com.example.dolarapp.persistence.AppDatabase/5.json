@@ -1,0 +1,70 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 5,
+    "identityHash": "3d98234e71d5c2c0dd5a683e07853bc5",
+    "entities": [
+      {
+        "tableName": "dollar",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT, `moneda` TEXT NOT NULL, `casa` TEXT NOT NULL, `nombre` TEXT NOT NULL, `compra` REAL NOT NULL, `venta` REAL NOT NULL, `fechaActualizacion` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "currency",
+            "columnName": "moneda",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "house",
+            "columnName": "casa",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "nombre",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "purchase",
+            "columnName": "compra",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sale",
+            "columnName": "venta",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updateDate",
+            "columnName": "fechaActualizacion",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "uid"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3d98234e71d5c2c0dd5a683e07853bc5')"
+    ]
+  }
+}

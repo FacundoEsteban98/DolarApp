@@ -15,6 +15,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.room.Room
+import com.example.dolarapp.persistence.AppDatabase
 import com.example.dolarapp.presentation.DollarScreen
 import com.example.dolarapp.ui.theme.DolarAppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,7 +24,17 @@ import dagger.hilt.android.HiltAndroidApp
 
 
 @HiltAndroidApp
-class MyApplication : Application()
+class MyApplication : Application() {
+    lateinit var database: AppDatabase
+    override fun onCreate() {
+        super.onCreate()
+        database = Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java,
+            "database-dollar"
+        ).fallbackToDestructiveMigration().build()
+    }
+}
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
